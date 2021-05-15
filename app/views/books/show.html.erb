@@ -1,2 +1,31 @@
-<h1>Books#show</h1>
-<p>Find me in app/views/books/show.html.erb</p>
+<main>
+  <p id ="notice"></p>
+ <%= render"books/list",book:@newbook %>
+     <div class="col-md-8 offset-md-1">
+       <h2>Books</h2>
+       <table class="table table-hover table-inverse">
+         <thead>
+           <tr>
+             <th></th>
+             <th>Title</th>
+             <th>Opinion</th>
+             <th colspan= "3"></th>
+           </tr>
+         </thead>
+         <tbody>
+           <tr>
+             <td>ユーザー画像</td>
+             <td><%=link_to @book.title,book_path(@book.id) %></td>
+             <td><%=@book.body %></td>
+             <td><a class="btn btn-sm btn-success edit_book_user_id">Edit</a></td>
+             <td><a data-confirm="本当に消しますか？" class="btn btn-sm btn-danger destroy_book_id" rel="nofollow"data-method="delete" href="/book/id">Destroy</a></td>
+          
+           </tr>
+         </tbody>
+       </table>
+       
+     </div>
+     </div> 
+    </div>
+  </div>
+</main>
