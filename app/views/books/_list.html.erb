@@ -1,26 +1,22 @@
- <div class="container px-5 px-sm-0">
-    <div class="row">
-     <div class="col-md-3">
-
-      <h2>User info</h2>
-        <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg"%>
+    <h2>User info</h2>
+        <%= attachment_image_tag user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg"%>
       <table class="table">
         <tbody>
           <tr></tr>
           <tr>
             <th>name</th>
-            <th><%= @user.name %></th>
+            <th><%= user.name %></th>
           </tr>
           <tr>
             <th>introduction</th>
-            <th><%= @user.introduction %></th>
+            <th><%= user.introduction %></th>
           </tr>
         </tbody>
 
       </table>
       <div class="row">
-         <% if @user.id == current_user.id %>
-          <%= link_to edit_user_path(@user) do%>
+         <% if user.id == current_user.id %>
+          <%= link_to edit_user_path(user) do%>
            <i class="fas fa-user-edit btn btn-outline-secondary btn-block"></i>
           <% end %>
          <% end %>
@@ -38,4 +34,3 @@
        <hr>
           <%= f.submit 'Create Book', class:"btn btn-lg btn-block btn-info mt-4" %>
       <% end %>
-  </div>

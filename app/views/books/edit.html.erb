@@ -3,7 +3,7 @@
   <div class="container">
     <div class="row">
       <div class=class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-        <h1>Editing</h1>
+        <h1>Editing Book</h1>
         <%= form_with model: @book, local:true do |f| %>
         <div class="form-group">
         <label for="book_title">Title</label>
@@ -14,9 +14,12 @@
         <%= f.text_area :body, class:"form-control" %>
         </div>
         <div class="form-group">
-          <%= f.submit "Update Book",class:"btn btn-lg btn-block btn-info mt-4" %>
+          <%= f.submit "Update Book",class:"btn btn-lg  btn-success mt-4" %>
         </div>
         <% end %>
+        <td><%= link_to "Show", book_path(@book.id) %></td>
+        | 
+        <td><%= link_to "Back",books_path %></td>
         
 
       </div>
