@@ -28,10 +28,10 @@
              <%=link_to user_path(current_user) do %><i class="fas fa-home" > Home</i><% end %>
              <%=link_to users_path do %><i class="fas fa-users" > Users</i><% end %>
              <%=link_to books_path do %><i class="fas fa-book-open" > Books</i><% end %>
-             <%=link_to destroy_user_session_path,method: :delete do %><i class="fas fa-sign-out-alt" > log out</i><% end %>
+             <%=link_to destroy_user_session_path,method: :delete do %><i class="fas fa-sign-out-alt" > logout</i><% end %>
             <% else %>
              <%=link_to root_path do %><i class="fas fa-home" > Home</i><% end %>
-             <%=link_to homes_about_path do %><i class="fas fa-link" > About</i><% end %>
+             <%=link_to home_about_path do %><i class="fas fa-link" > About</i><% end %>
              <%=link_to new_user_registration_path do %><i class="fas fa-user-plus" > sign up</i><% end %>
              <%=link_to new_user_session_path do %><i class="fas fa-sign-in-alt" > login</i><% end %>
             <% end %>
@@ -40,7 +40,10 @@
       </div>
     </nav>
   </header>
-
+    <% flash.each do |key, value| %>
+    <%= content_tag(:div, value, class: "#{key}") %>
+    <% end %>
+    
     <%= yield %>
 
     <footer>

@@ -16,39 +16,52 @@
  @import "bootstrap";
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
- 
+
  *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
  }
- 
+
  .navbar {
     position: relative;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
  }
- 
+
  span {
   color:#fff;
  }
- 
+
  .ml-auto, .mx-auto{
   margin-left: auto !important;
  }
- 
+
  label {
   display: inline-block;
  }
- 
+
  ul > a {
   color: #fff;
   padding:5px;
- } 
- 
+ }
+
  .btn-wrapper > .row {
   margin-bottom: 10px
   ;
  }
- 
+
+.notice {
+ color: green;
+}
+
+
+#error_explanation {
+ color: red;
+}
+
+.btn {
+
+ width: 100%;
+}
