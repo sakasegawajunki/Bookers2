@@ -9,31 +9,59 @@
      <div class="col-md-8 offset-md-1">
        <h2>Book detail</h2>
        <table class="table">
+        <%if @book.user == current_user %>
          <tbody>
            <tr>
              <td>
               <%= link_to user_path(@user.id) do %>
                <%= attachment_image_tag @user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg" %>
               <% end %>
-               <br><%= link_to @user.name,user_path(@user.id) %>
+              <br><%= link_to @user.name,user_path(@user.id) %>
              </td>
              <td><%=link_to @book.title,book_path(@book.id) %></td>
              <td><%=@book.body %></td>
-               <%if @book.user == current_user %>
-                 <td>
-                 <%=link_to edit_book_path(@book.id),class:"btn btn-sm btn-success" do %>
-                 Edit
-                 <% end %>
-                </td>
+             <td>
+              <%=link_to edit_book_path(@book.id),class:"btn btn-sm btn-success" do %>
+               Edit
+              <% end %>
+              </td>
 
-                 <td>
-                 <%=link_to book_path(@book),method: :delete, class:"btn btn-sm btn-danger" ,"data-confirm" => "本当に消しますか？" do %>
-                 Destroy
-                 <% end %>
-                <% end %>
-                 </td>
+              <td>
+               <%=link_to book_path(@book),method: :delete, class:"btn btn-sm btn-danger" ,"data-confirm" => "本当に消しますか？" do %>
+                Destroy
+               <% end %>
+              </td>
            </tr>
          </tbody>
+        <% else %> 
+          <tbody>
+           <tr>
+             <td>
+              <%= link_to user_path(@user.id) do %>
+               <%= attachment_image_tag @user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg" %>
+              <% end %>
+              <br><%= link_to @user.name,user_path(@user.id) %>
+             </td>
+             <td><%=link_to @book.title,book_path(@book.id) %></td>
+             <td><%=@book.body %></td>
+             <td>
+              <p>
+              <% if @book.favorited_by?(current_user) %>
+              <%= link_to book_favorites_path(@book), method: :delete do %>
+              ♥<%=@book.favorites.count %>
+              <% end %>
+              </p>
+              <% else %>
+              <p>
+               <%= link_to book_favorites_path(@book), method: :post do %>
+                ♡<%= @book.favorites.count %> 
+                <% end %>
+               <% end %>
+              </p>
+             </td>
+           </tr>
+         </tbody>
+        <% end %>
        </table>
 
      </div>
