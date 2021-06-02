@@ -41,10 +41,13 @@
                <%= link_to book_favorites_path(book), method: :post do %>
                 ♡<%= book.favorites.count %> 
                 <% end %>
+              <% end %>
               </p>
              </td>
+             <td>
+              <p>コメント数: <%= book.book_comments.count %></p>
+             </td>
              
-              <% end %>
               <% end %> 
           
            </tr>
