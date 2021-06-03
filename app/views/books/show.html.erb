@@ -34,6 +34,56 @@
            </tr>
          </thead>
        </table>
+       
+            <table cellspacing="10">
+           
+               <% @book.book_comments.each do |book_comment| %>
+             <tr>
+              <div class="comments">
+               <td style="margin: 0 30px; padding-right: 10px;"><%= attachment_image_tag book_comment.user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg",size:'40x40' %><br>
+               <%= link_to book_comment.user.name,users_path %>
+               </td>
+               <td style="margin: 0 30px; padding-right: 10px;">
+                <p>
+                
+                <%= book_comment.comment %>
+             
+                </p>
+                </td>
+               <% if book_comment.user == current_user %>
+               <td>    
+                <%=link_to  book_book_comment_path(book_comment.book_id,book_comment.id),method: :delete, class:"btn btn-sm btn-danger" do %>
+                 Destroy
+                 <% end %>
+               </td>
+               <% end %>
+               </div>
+              </tr>
+               <% end %>
+               </table>
+               
+             <div id="error_explanation">
+              <% if @book_comment.errors.any? %>
+               <h3>
+                <%= @book_comment.count %> errors prohibited this obj from being saved:
+               </h3>
+              <ul>
+              <% @book_comment.errors.full_messages.each do |message| %>
+               <li> 
+                <%= message %>
+               </li>
+              <% end %>
+             </ul>
+             <% end %>
+            </div>
+              
+              <div class = "new-comment">
+               <%=form_with(model:[@book,@book_comment], local:true) do |f| %>
+               <%=f.text_area :comment ,size: "60x6" %>
+               <%=f.submit"送信" %>
+               <% end %>
+              </div>
+              
         <% else %> 
         
        <table class="table" border="0">
