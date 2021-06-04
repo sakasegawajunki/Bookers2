@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get '/search' => "search#search"
   get 'favorites/create'
   get 'favorites/destroy'
   root to: "homes#top"
