@@ -23,6 +23,7 @@ class BooksController < ApplicationController
     @user = @book.user  #@bookの投稿者(@bookの親)
     @newbook = Book.new
     @book_comment = BookComment.new
+   
   end
 
   def edit
