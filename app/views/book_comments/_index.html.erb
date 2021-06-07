@@ -1,6 +1,6 @@
+<table cellspacing="10" class ="book_book_comments_area">
    <% book.book_comments.each do |book_comment| %>
     <tr>
-     <!--<div class="comments">-->
        <td style="margin: 0 30px; padding-right: 10px;"><%= attachment_image_tag book_comment.user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg",size:'40x40' %><br>
         <%= link_to book_comment.user.name,users_path %>
         </td>
@@ -14,6 +14,6 @@
           <% end %>
         </td>
         <% end %>
-    <!--</div>-->
    </tr>
   <% end %>
+</table>

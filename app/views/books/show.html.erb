@@ -52,18 +52,16 @@
               <%= render "favorites/favorite-btn",book:@book %>
               </div>
               </td>
-              <td>
-               コメント数: <%= @book.book_comments.count %>
-              </td>
+               <td class ="comment-count">
+               <%= render "book_comments/comment-count", book:@book %>
+              </td> 
              </tr>
            </thead>
           </table>
              
-          <table cellspacing="10" class ="book_book_comments_area">
-           <!--<div class ="book_book_comments_area">-->
-            <%= render "book_comments/index",book:@book %>
-           <!--</div> -->
-          </table>
+          
+            <%= render "book_comments/index",book:@book,user:@user %>
+          
                
              <div id="error_explanation">
               <% if @book_comment.errors.any? %>
