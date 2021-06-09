@@ -7,6 +7,8 @@
       </div>
       <div class="col-md-8 offset-md-1">
         <h2>Users</h2>
+        <%= link_to "グループを作成する", new_group_path %>  |  
+        <%= link_to "グループ一覧", groups_path %>
         <table class="table">
           <thead>
             <tr>
@@ -33,7 +35,7 @@
                   <% else %>
                    <%= link_to "フォローする", user_relationships_path(user.id), method: :post %>
                  <% end %>
-                <% else %>
+              
                 <% end %>
                </td>
               <td>
