@@ -10,7 +10,7 @@
        <h2>Book detail</h2>
         <%if @book.user == current_user %>
        <table class="table">
-         <thead>
+        
            <tr>
              <td>
               <%= link_to user_path(@user.id) do %>
@@ -24,10 +24,11 @@
                <%= render "book_comments/comment-count", book:@book %>
               </td>
              <td>
+              
                 <div id="rate_<%= @book.id %>"></div>
                 <script>
                  $('#rate_<%= @book.id %>').raty({
-                 size: 10,
+                 size: 36,
                  starOff:  '<%= asset_path('star-off.png') %>',
                  starOn : '<%= asset_path('star-on.png') %>',
                  starHalf: '<%= asset_path('star-half.png') %>',
@@ -49,13 +50,12 @@
                <% end %>
               </td>
            </tr>
-         </thead>
          
        </table>
         <% else %> 
         
        <table class="table" border="0">
-        <thead>
+        
          <tr>
           <td>
               <%= link_to user_path(@user.id) do %>
@@ -77,7 +77,7 @@
                 <div id="rate_<%= @book.id %>"></div>
                 <script>
                  $('#rate_<%= @book.id %>').raty({
-                 size: 20,
+                 size: 36,
                  starOff:  '<%= asset_path('star-off.png') %>',
                  starOn : '<%= asset_path('star-on.png') %>',
                  starHalf: '<%= asset_path('star-half.png') %>',
@@ -88,7 +88,7 @@
             </script>
               </td>
              </tr>
-           </thead>
+          
           </table>
              
           

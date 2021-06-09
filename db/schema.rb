@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2021_06_09_041558) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.float "rate"
+    t.float "rate", default: 0.0, null: false
   end
 
   create_table "favorites", force: :cascade do |t|
