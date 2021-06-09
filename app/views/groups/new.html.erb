@@ -2,24 +2,24 @@
   <div class='row'>
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
     <h2>Create Group</h2>
-      <div class="form-group">
-        <%= form_with model: @group, locla:true do |f| %>
+        <%= form_with model: @group, method: :post, local: true do |f| %>
+      <div>
         <%= f.label :グループ名 %>
         <%= f.text_field :name, class: 'form-control' %>
       </div>
 
-      <div class ="form-group">
+      <div>
         <%= f.label :紹介文 %>
         <%= f.text_area :introduction, class: 'form-control' %>
   
       </div>
 
-      <div class = "form-group">
+      <div>
         <%= f.label :グループ画像 %>
         <%= f.attachment_field :image, class: "form-control-file" %>
       </div>
       
-      <div class="form-group">
+      <div>
         <%= f.submit class: 'btn btn-info' %>
       </div>
       

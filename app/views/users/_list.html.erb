@@ -65,6 +65,24 @@
          <label for="book_opinion">Opinion</label>
          <%= f.text_area :body, class:"form-control",rows:"3" %>
        </div>
-       <hr>
-          <%= f.submit 'Create Book', class:"btn btn-lg btn-block btn-info mt-4" %>
-      <% end %>
+      
+      
+      
+      <div class="form-group" id="star">
+        <%= f.label :rate %>
+        <%= f.hidden_field :rate, id: :review_star, class:'form-control' %>
+      </div>
+    
+      <script>
+      $('#star').raty({
+        size     : 36,
+        starOff:  '<%= asset_path('star-off.png') %>',
+        starOn : '<%= asset_path('star-on.png') %>',
+        starHalf: '<%= asset_path('star-half.png') %>',
+        scoreName: 'book[rate]',
+        half: true,
+      });
+      </script>
+      <hr>
+              <%= f.submit 'Create Book', class:"btn btn-lg btn-block btn-info mt-4" %>
+    <% end %>
