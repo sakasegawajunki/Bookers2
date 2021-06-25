@@ -2,14 +2,14 @@
   <p id ="notice"></p>
    <div class="container px-5 px-sm-0">
     <div class="row">
-     <div class="col-md-3">
+     <div class="col-md-2">
 
       <%= render"users/list",book:@newbook,user:@user %>
      </div>
-     <div class="col-md-8 offset-md-1">
+     <div class="col-md-9 offset-md-1">
        <h2>Book detail</h2>
         <%if @book.user == current_user %>
-       <table class="table">
+       <table class="table table-hover table-inverse">
         
            <tr>
              <td>
@@ -38,6 +38,7 @@
                  });
                 </script>
              </td>
+             <td width="150px"><%= @book.impressions_count %></td>
              <td>
               <%=link_to edit_book_path(@book.id),class:"btn btn-sm btn-success" do %>
                Edit
@@ -54,7 +55,7 @@
        </table>
         <% else %> 
         
-       <table class="table" border="0">
+       <table class="table table-hover table-inverse">
         
          <tr>
           <td>
@@ -87,6 +88,7 @@
                 });
             </script>
               </td>
+              <td><%= @book.impressions_count %></td>
              </tr>
           
           </table>

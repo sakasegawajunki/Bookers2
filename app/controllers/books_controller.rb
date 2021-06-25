@@ -1,5 +1,9 @@
 class BooksController < ApplicationController
   
+  # impressionist :actions=> [:show, :index]
+
+  
+  
   def index
     to  = Time.current.at_end_of_day
     from  = (to - 6.day).at_beginning_of_day
@@ -8,9 +12,11 @@ class BooksController < ApplicationController
         b.favorited_users.includes(:favorites).where(created_at: from...to).size <=> 
         a.favorited_users.includes(:favorites).where(created_at: from...to).size
       }
+    @books = Book.page(params[:page]).per(5)
     # @books = Book.left_joins(:favorites).group(:id).where(favorites: { created_at: from...to}).order('count(books.id) desc').limit(10)
     @book = Book.new
     @user = current_user
+    @rank_books = Book.order(impressions_count: "DESC")
   end
 
   def create
@@ -29,8 +35,8 @@ class BooksController < ApplicationController
     @book=Book.find(params[:id])
     @user = @book.user  #@bookの投稿者(@bookの親)
     @newbook = Book.new
-    @book_comment = BookComment.new
-   
+    @book_comment = BookComment.new 
+    impressionist(@book, nil, unique: [:ip_address])
   end
 
   def edit
