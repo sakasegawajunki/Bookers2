@@ -15,7 +15,7 @@ class User < ApplicationRecord
   has_many :followings, through: :relationships, source: :followed
   
   has_many :group_users
-  # has_many :groups, through: :group_users
+  has_many :groups, through: :group_users
   
   has_many :user_rooms
   has_many :chats

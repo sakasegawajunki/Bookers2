@@ -10,8 +10,6 @@ class UsersController < ApplicationController
     @last_week_book = @books.create_last_week
   end
 
-
-
   def update
     @user=User.find(params[:id])
     if @user.update(user_params)

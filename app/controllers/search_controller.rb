@@ -7,6 +7,7 @@ class SearchController < ApplicationController
     @datas = search_for(@how, @model, @value)
   end
   
+  
   private
   
   def match(model, value)
