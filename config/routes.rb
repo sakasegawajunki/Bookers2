@@ -17,7 +17,9 @@ Rails.application.routes.draw do
  end
    resources :groups do
      get "join" => "groups#join"
-  end
+     get "new/mail" => "groups#new_mail"
+     get "send/mail" => "groups#send_mail"
+   end
  
   resources :books,only: [:new, :create, :index, :show, :destroy, :edit, :update] do
     resource :favorites, only: [:create, :destroy]
